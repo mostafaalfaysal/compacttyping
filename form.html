@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration: Compact Fastest Fingers 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:ital,wght@0,400;0,500;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/code" rel="stylesheet">
+    
+    <style>
+        /* --- Global Resets & Variables --- */
+        @import url('https://cdnfonts.com');
+         @import url('https://fonts.cdnfonts.com/css/code');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #da1212;
+            --dark-text: #000000;
+            --input-glow: rgba(82, 168, 255, 0.4);
+            --bg-light: #f4f4f4;
+            --font-main: 'Roboto', sans-serif;
+            --font-title: 'Oswald', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            color: var(--dark-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Decorative Elements --- */
+        .bg-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            background-image: radial-gradient(#d3d3d3 20%, transparent 20%);
+            background-size: 20px 20px;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .bg-red-shapes {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape-1 {
+            position: absolute;
+            bottom: 50px;
+            right: -100px;
+            width: 600px;
+            height: 400px;
+            background-color: var(--primary-red);
+            transform: rotate(-35deg);
+        }
+
+        .shape-2 {
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 500px;
+            height: 300px;
+            background-color: var(--primary-red);
+            transform: rotate(35deg);
+        }
+
+        /* --- Header --- */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 10px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 250px 100%, 220px 0);
+            width: 400px;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            border: 2px solid #ccc;
+        }
+
+        .red-slashes {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+            transform: skewX(-20deg);
+        }
+
+        .slash {
+            width: 10px;
+            height: 15px;
+            background-color: var(--primary-red);
+        }
+
+        /* --- Main Content --- */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            z-index: 1;
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title-container h1 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            line-height: .6;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .title-container h1 .title-black {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            line-height: .1;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            
+            display:flex;            justify-content: center;
+        }
+         .title-container h1 .title-red {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            line-height: .2;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display:flex;            justify-content: center;
+        }
+
+        .title-black { color: var(--dark-text); }
+        .title-red { color: var(--primary-red); }
+        .title-red-c { font-size: 1.5rem; color: var(--primary-black); line-height: .6; }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        /* --- Form Card --- */
+        .form-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 40px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Tech edges on top/bottom of form */
+        .form-card::before, .form-card::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 6px;
+            background: #333;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .form-card::before { top: -2px; }
+        .form-card::after { bottom: -2px; }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            box-shadow: 0 0 12px var(--input-glow);
+            transition: all 0.3s ease;
+            font-family: var(--font-main);
+        }
+
+        .form-group input:focus {
+            border-color: #52a8ff;
+            box-shadow: 0 0 15px rgba(82, 168, 255, 0.7);
+        }
+
+        /* --- Deadline Info Box --- */
+        .info-box {
+            border: 2px solid var(--primary-red);
+            background-color: rgba(218, 18, 18, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin: 30px 0 25px 0;
+        }
+
+        .info-box p {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .info-red {
+            color: var(--primary-red);
+        }
+
+        /* --- Submit Button --- */
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-red);
+            color: white;
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-style: italic;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Angled sci-fi cuts */
+            clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 30%);
+            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(218, 18, 18, 0.4);
+        }
+
+        .submit-btn:hover {
+            background-color: #b30f0f;
+        }
+
+        /* --- Footer --- */
+        .footer-red-bar {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .go-back {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .copyright-bar {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .title-container h1 { font-size: 2.2rem; }
+            .form-card { padding: 25px; }
+            .footer-red-bar { flex-direction: column; gap: 15px; text-align: center; }
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: contain; /* Ensures the whole logo fits nicely inside the circle */
+            background-color: white; /* Optional: adds a white background if the logo is transparent */
+        }
+       p {
+        font-family: 'Code Bold', sans-serif;
+        display:flex;
+        justify-content: center;
+        margin-top: 5px;
+        letter-spacing: 1px;
+                                                
+        }
+    </style>
+
+</head>
+<body>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSerAnvOFxL-3IR4lr8xIuKgF3YGgFPCWk5q9c8Tnu650Y-azQ/formResponse" method="POST">
+    <div class="bg-dots"></div>
+    <div class="bg-red-shapes">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+    </div>
+
+    <header class="top-bar">
+        <div class="logo-placeholder">LOGO<br>HERE</div>
+        <div class="red-slashes">
+            <img src="https://ibb.co.com/5WBzYSDn" alt="Event Logo" class="logo-img">
+            <div class="slash"></div>
+            <div class="slash"></div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="title-container">
+            <h1>
+                <span class="title-black " style="font-family: 'Rush Driver', sans-serif; margin-bottom: 20px;">REGISTRATION FORM</span><br>
+                <span class="title-black " style="font-family: 'Rush Driver', sans-serif;">COMPACT</span><br>
+                <span class="title-red " style="font-family: 'Rush Driver', sans-serif;">FASTEST</span><br>
+                <span class="title-red " style="font-family: 'Rush Driver', sans-serif;">FINGERS</span><br>
+                <span class="title-black " style="font-family: 'Rush Driver', sans-serif;">2026</span><br>
+            </h1>
+            <p class="subtitle">Flex Your Fingers and Join the Ultimate Typing Challenge!<br>Enter your details below.</p>
+        </div>
+
+        <div class="form-card">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name :</label>
+                    <input type="text" name="entry.2092238618" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select name="entry.479301265" required>
+                        <option value="CST">CST</option>
+                        <option value="CT">CT</option>
+                        <option value="ET">ET</option>
+                        <option value="Arch">Arch</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-no">Registration No:</label>
+                    <input type="text" name="entry.1753222212" placeholder="Registration Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="entry.1556369182" placeholder="Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone No:</label>
+                    <input type="tel" name="entry.875502080" placeholder="Phone Number" required>
+                </div>
+
+                <div class="info-box">
+                    <p>REGISTRATION DEADLINE: <span class="info-red">JUNE 26, 2026</span></p>
+                    <p>COMPETITION DATE: <span class="info-red">SUNDAY, JUNE 28, 2026</span></p>
+                </div>
+
+                <button type="submit" class="submit-btn">SUBMIT REGISTRATION</button>
+            </form>
+        </div>
+    </div>
+
+   
+
+    <div class="copyright-bar">
+        © 2026 [Compact Polytechnic Institute & ICT Club] All rights reserved
+    </div>
+
+</body>
+</html>
